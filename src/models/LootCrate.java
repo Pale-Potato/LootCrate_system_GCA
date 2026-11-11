@@ -8,8 +8,16 @@ public class LootCrate {
 
     public LootCrate(int crateId, int price, String loot) {
         this.crateId = crateId;
-        this.price = price;
-        this.loot = loot;
+        if (price < 0){
+            throw new IllegalArgumentException("Price can't be negative");
+        } else {
+            this.price = price;
+        }
+        if (loot == null || loot.isBlank()) {
+            throw new IllegalArgumentException("Loot required");
+        } else {
+            this.loot = loot;
+        }
     }
 
     public int getCrateId() {

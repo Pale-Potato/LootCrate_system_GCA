@@ -9,8 +9,16 @@ public class Player {
 
     public Player(int id, String name, int credits) {
         this.id = id;
-        this.name = name;
-        this.credits = credits;
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name required");
+        } else {
+            this.name = name;
+        }
+        if (credits < 0){
+            throw new IllegalArgumentException("Credits can't be negative");
+        } else {
+            this.credits = credits;
+        }
     }
 
     public int getId() {
